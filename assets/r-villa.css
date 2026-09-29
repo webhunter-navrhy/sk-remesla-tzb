@@ -1,0 +1,69 @@
+/* Replika „villa lumière“ */
+.vi {
+  --bg: #EDEAE4; --ink: #151412; --mut: #726C62; --line: rgba(21,20,18,.15); --pad: clamp(18px, 3vw, 44px);
+  background: #0f0e0d; color: var(--ink); font: 300 15px/1.6 'Geist', system-ui, sans-serif;
+}
+.vi-mono { font: 400 11px/1.55 'DM Mono', ui-monospace, monospace; letter-spacing: .06em; }
+.vi h1, .vi h2, .vi b { font-family: 'Inter Tight', sans-serif; font-weight: 300; letter-spacing: -.045em; }
+
+/* celoplošný panel */
+.vi-panel { position: relative; min-height: min(100svh, 1000px); color: #fff; overflow: hidden; margin-bottom: 8px; }
+.vi-panel__img { position: absolute; inset: 0; }
+.vi-panel__img img { width: 100%; height: 100%; object-fit: cover; }
+.vi-panel::after { content: ''; position: absolute; inset: 0; background: linear-gradient(200deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0) 55%, rgba(0,0,0,.42) 100%); pointer-events: none; }
+.vi-panel > *:not(.vi-panel__img) { position: absolute; z-index: 2; }
+.vi-tl { left: var(--pad); top: calc(var(--pad) + 4px); }
+.vi-tl--hero { top: 90px; }
+.vi-tr { right: var(--pad); top: clamp(80px, 12vh, 130px); max-width: 62%; text-align: left; font-size: clamp(3.2rem, 8.4vw, 8.6rem); line-height: .9; margin: 0; }
+.vi-panel:not(.vi-hero) .vi-tr { top: calc(var(--pad) - 6px); font-size: clamp(2.8rem, 6.4vw, 6.6rem); max-width: 60%; }
+.vi-br { right: var(--pad); bottom: calc(var(--pad) + 6px); max-width: 30ch; font: 300 clamp(15px, 1.35vw, 19px)/1.35 'Inter Tight', sans-serif; letter-spacing: -.01em; }
+.vi-br a { display: inline-block; margin-top: 10px; border-bottom: 1px solid rgba(255,255,255,.6); }
+.vi-bl { left: var(--pad); bottom: calc(var(--pad) + 6px); display: grid; grid-template-columns: 38px auto; column-gap: 12px; align-items: center; }
+.vi-av { grid-row: 1 / 3; width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(255,255,255,.7); display: grid; place-items: center; font-size: 11px; }
+.vi-nav { top: 0; left: 0; right: 0; display: flex; justify-content: space-between; padding: 24px var(--pad); }
+.vi-nav span { display: flex; gap: 26px; }
+.vi-hero h1 { animation: vi-in 1.6s cubic-bezier(.22,1,.36,1) both; }
+@keyframes vi-in { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+
+/* úvod */
+.vi-intro { background: var(--bg); padding: clamp(90px, 13vw, 190px) var(--pad); margin-bottom: 8px; display: grid; grid-template-columns: 1fr 3fr; gap: 30px; }
+.vi-intro h2 { font-size: clamp(2rem, 4.2vw, 4.2rem); line-height: 1.02; max-width: 20ch; }
+
+/* světlá sekce */
+.vi-svetla { background: var(--bg); padding: clamp(80px, 10vw, 140px) var(--pad); margin-bottom: 8px; }
+.vi-cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 6vw, 100px); }
+.vi-list { list-style: none; margin: 24px 0 0; padding: 0; }
+.vi-list li { display: grid; grid-template-columns: 50px 1fr; gap: 4px 12px; padding: 20px 0; border-top: 1px solid var(--line); }
+.vi-list .vi-mono { color: var(--mut); padding-top: 8px; }
+.vi-list b { font-size: clamp(1.6rem, 2.4vw, 2.3rem); line-height: 1.05; }
+.vi-list p { grid-column: 2; color: var(--mut); font-size: 14px; }
+
+/* kontakt */
+.vi-kontakt { min-height: auto; }
+.vi-kontakt .vi-panel__img img { filter: brightness(.38); }
+.vi-kontakt__in { position: relative !important; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 6vw, 100px); padding: clamp(80px, 10vw, 140px) var(--pad); }
+.vi-kontakt h2 { font-size: clamp(2.6rem, 5vw, 5rem); line-height: .95; margin: 18px 0 20px; }
+.vi-lead { max-width: 38ch; color: rgba(255,255,255,.75); margin-bottom: 30px; }
+.vi-kont { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.vi-kont small { display: block; color: rgba(255,255,255,.6); }
+.vi-kont a, .vi-kont span { font: 300 1.25rem/1.3 'Inter Tight', sans-serif; overflow-wrap: anywhere; }
+.vi-form { --f-ink: #fff; --f-line: rgba(255,255,255,.3); --f-acc: #fff; }
+.vi-form button { background: #fff; color: var(--ink); border-radius: 999px; padding: 14px 24px; font-size: 14px; }
+.vi .mapa { aspect-ratio: 21/6; filter: grayscale(1) contrast(.9); margin-bottom: 8px; }
+.vi-foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 26px var(--pad); color: rgba(255,255,255,.6); }
+
+@media (max-width: 900px) {
+  .vi-tr, .vi-panel:not(.vi-hero) .vi-tr { max-width: calc(100% - 2 * var(--pad)); left: var(--pad); }
+  .vi-hero .vi-tr { top: 150px; }
+  .vi-tl--hero { top: 70px; }
+  .vi-panel:not(.vi-hero) .vi-tr { top: 70px; }
+  .vi-intro, .vi-cols, .vi-kontakt__in { grid-template-columns: 1fr; }
+  .vi-nav span { display: none; }
+}
+@media (max-width: 600px) {
+  .vi-panel { min-height: 88svh; }
+  .vi-br { left: var(--pad); max-width: none; bottom: 90px; }
+  .vi-hero .vi-br { bottom: 96px; }
+  .vi-panel:not(.vi-hero) .vi-br { bottom: var(--pad); }
+  .vi .mapa { aspect-ratio: 4/3; }
+}
